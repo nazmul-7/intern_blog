@@ -17,5 +17,9 @@
 // Route::get('/about', function () {
 //     return view('welcome');
 // });
-
+Route::post('/app/add_product', "ProductController@storeProduct");
+Route::post('/app/edit_product', "ProductController@updateProduct");
+Route::post('/app/delete_product', "ProductController@delete_Product");
+Route::get('/app/all_product', "ProductController@all_product");
+Route::get('/app/product/{id}', "ProductController@show_product");
 Route::any('{slug}', 'HomeController@home')->where('slug', '([A-z\d-\/_.]+)?');
