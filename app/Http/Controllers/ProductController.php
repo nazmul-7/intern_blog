@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function all_product () {
-        return Product::all();
+        return Product::with('category')->get();
     }
     public function show_product ($id) {
         return Product::where('id',$id)->first();

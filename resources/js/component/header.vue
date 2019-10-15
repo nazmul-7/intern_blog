@@ -14,6 +14,11 @@
                         Add Product <span class="sr-only">(current)</span>
                     </router-link>
                 </li>
+                <li class="nav-item active">
+                    <router-link to="/category" class="nav-link"   >
+                        All Category <span class="sr-only">(current)</span>
+                    </router-link>
+                </li>
                 <li class="nav-item">
                      <router-link to="/about" class="nav-link"   >
                         About 
