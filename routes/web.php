@@ -26,9 +26,15 @@ Route::get('/app/all_product', "ProductController@all_product");
 Route::get('/app/product/{id}', "ProductController@show_product");
 
 // Category Route
+Route::get('/app/all_category', "CategoryController@allCategory");
 Route::post('/app/add_category', "CategoryController@storeCategory");
 Route::post('/app/edit_category', "CategoryController@updateCategory");
 Route::post('/app/delete_category', "CategoryController@deleteCategory");
-Route::get('/app/all_category', "CategoryController@allCategory");
+
+// Category Route
+Route::get('/app/all_tag', "TagController@allTag");
+Route::post('/app/add_tag', "TagController@storeTag");
+Route::post('/app/edit_tag', "TagController@updateTag");
+Route::post('/app/delete_tag', "TagController@deleteTag");
 
 Route::any('{slug}', 'HomeController@home')->where('slug', '([A-z\d-\/_.]+)?');

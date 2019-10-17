@@ -8,6 +8,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Category</th>
+                <th scope="col">Tags</th>
                 <th scope="col">Price</th>
                 </tr>
             </thead>
@@ -21,6 +22,14 @@
                         <router-link :to="`/product/${item.id}`"  >{{item.name}} </router-link>
                         </td>
                     <td>{{item.category.name}}</td>
+                    <td>
+                        <div v-if="item.tags.length>0">
+                            <div v-for="(i,x) in item.tags" :key="x">
+                                <span v-if="x!==0"  >,</span>
+                                <span >{{i.tag.name}}  </span> 
+                            </div>
+                        </div>
+                    </td>
                     <td>{{item.price}}</td>
                 </tr>
             </tbody>

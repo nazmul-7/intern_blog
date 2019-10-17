@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2019 at 04:18 PM
+-- Generation Time: Oct 17, 2019 at 12:48 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -79,7 +79,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_10_11_113051_create_products_table', 1),
-(5, '2019_10_15_084556_create_categories_table', 2);
+(5, '2019_10_15_084556_create_categories_table', 2),
+(6, '2019_10_17_084905_create_tags_table', 3),
+(7, '2019_10_17_085039_create_product_tags_table', 3);
 
 -- --------------------------------------------------------
 
@@ -115,7 +117,53 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `category_id`, `name`, `price`, `created_at`, `updated_at`) VALUES
 (2, 1, 'Product Name 2', 15, '2019-10-12 03:55:09', '2019-10-12 03:55:09'),
 (3, 1, 'Product name 3', 12, '2019-10-12 04:11:31', '2019-10-12 04:11:31'),
-(4, 1, 'Product Name 5', 35, '2019-10-15 04:17:44', '2019-10-15 04:17:44');
+(4, 1, 'Product Name 5', 35, '2019-10-15 04:17:44', '2019-10-15 04:17:44'),
+(6, 2, 'All rounder Tea', 35, '2019-10-17 04:09:11', '2019-10-17 04:09:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_tags`
+--
+
+CREATE TABLE `product_tags` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) NOT NULL,
+  `tag_id` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_tags`
+--
+
+INSERT INTO `product_tags` (`id`, `product_id`, `tag_id`, `created_at`, `updated_at`) VALUES
+(1, 6, 3, NULL, NULL),
+(2, 6, 4, NULL, NULL),
+(3, 6, 5, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(3, 'Green', '2019-10-17 03:08:04', '2019-10-17 03:08:04'),
+(4, 'Black', '2019-10-17 03:08:11', '2019-10-17 03:08:11'),
+(5, 'Red', '2019-10-17 03:08:18', '2019-10-17 03:08:18');
 
 -- --------------------------------------------------------
 
@@ -170,6 +218,18 @@ ALTER TABLE `products`
   ADD KEY `category` (`category_id`);
 
 --
+-- Indexes for table `product_tags`
+--
+ALTER TABLE `product_tags`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -196,13 +256,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `product_tags`
+--
+ALTER TABLE `product_tags`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
