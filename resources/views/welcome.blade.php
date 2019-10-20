@@ -69,6 +69,18 @@
             <div id="app">
                 <masterr></masterr>
             </div>
+            <script>
+        (function () {
+               window.Laravel = {
+                   csrfToken: '{{ csrf_token() }}'
+               };
+               @if(Auth::check())
+                 window.authUser={!! Auth::user() !!}
+                 @else
+                   window.authUser=false
+                 @endif
+           })();
+       </script>
         </div>
         <script src="/js/app.js"></script>
     </body>

@@ -18,6 +18,10 @@
 //     return view('welcome');
 // });
 
+// Registration & Login Route
+Route::post('/app/registration', "UserController@registration");
+Route::post('/app/login', "UserController@login");
+
 // Products Route
 Route::post('/app/add_product', "ProductController@storeProduct");
 Route::post('/app/edit_product', "ProductController@updateProduct");
@@ -37,4 +41,12 @@ Route::post('/app/add_tag', "TagController@storeTag");
 Route::post('/app/edit_tag', "TagController@updateTag");
 Route::post('/app/delete_tag', "TagController@deleteTag");
 
+
+
+Route::get('/logout', function () {
+    Auth::logout();
+    Session::flush();
+    return redirect("/");
+
+});
 Route::any('{slug}', 'HomeController@home')->where('slug', '([A-z\d-\/_.]+)?');

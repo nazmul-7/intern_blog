@@ -11,6 +11,8 @@ import add_product from '../pages/add_product.vue'
 import edit_product from '../pages/edit_product.vue'
 import category from '../pages/category.vue'
 import tags from '../pages/tags.vue'
+import login from '../pages/login.vue'
+import registration from '../pages/registration.vue'
 
 let Admin = ['Admin'];
 
@@ -41,6 +43,17 @@ export default new Router({
 
     },
     {
+      path: '/login',
+      name: 'login',
+      component: login,
+      meta: {
+         // guest: true,
+         // allowedUserType: ['All'],
+          title: 'login',
+      }
+
+    },
+    {
       path: '/tags',
       name: 'tags',
       component: tags,
@@ -48,6 +61,17 @@ export default new Router({
          // guest: true,
          // allowedUserType: ['All'],
           title: 'tags',
+      }
+
+    },
+    {
+      path: '/registration',
+      name: 'registration',
+      component: registration,
+      meta: {
+         // guest: true,
+         // allowedUserType: ['All'],
+          title: 'registration',
       }
 
     },

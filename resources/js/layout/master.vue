@@ -22,7 +22,7 @@ export default {
      // footerSection,
         },
   created(){
-   
+     this.$store.commit('setAuthuser', (window.authUser));
   },
 
 }

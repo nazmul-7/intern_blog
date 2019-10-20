@@ -24,6 +24,25 @@
                         About 
                     </router-link>
                 </li>
+                <template v-if="isLoggedIn">
+                     <li class="nav-item">
+                        <a href="/logout"  class="nav-link" >Logout</a>
+                    </li>
+                </template>
+                <template v-else>
+                     <li class="nav-item">
+                        <router-link to="/login" class="nav-link"   >
+                            Login 
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/registration" class="nav-link"   >
+                            Registration 
+                        </router-link>
+                    </li>
+                </template>
+               
+               
                 </ul>
             </div>
         </nav>
